@@ -111,15 +111,22 @@ router.get("/:id",async(req,res)=>{
 
 router.get("/timeline/all",async(req,res)=>{
   try {
+
+    // GETTING INFO OF USER
     const currentUser=await User.findById(req.body.userId);
+
+    // GETTING ALL POST OF THIS USER
     const userPosts=await Post.find({userId:currentUser._id});
 
+
+    // GETTING ALL POST OF PEOPLE WHOM I AM FOLLOWING
     const friendPost=await Promise.all(
       currentUser.followings.map((friendId)=>{
         return Post.find({userId:friendId})
       })
     )
 
+    // CONCATENATING MY POST AND POST OF PEOPLE WHOM I AM FOLLOWING
     return res.status(200).json(userPosts.concat(...friendPost))
   } catch (error) {
     return res.status(500).json(error)
