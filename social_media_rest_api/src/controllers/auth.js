@@ -2,6 +2,8 @@ const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
+
+// REGISTER
 router.post("/register", async (req, res) => {
   try {
     // HASHING THE PASSWORD
@@ -23,6 +25,9 @@ router.post("/register", async (req, res) => {
     return res.status(500).json(error);
   }
 });
+
+
+// LOGIN 
 
 router.post("/login", async (req, res) => {
   try {
