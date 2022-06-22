@@ -15,10 +15,12 @@ app.use(morgan("common"));
 //CONTROLLERS
 const authController=require("./controllers/auth");
 const userController=require("./controllers/user");
+const postController=require("./controllers/post");
 
 // ROUTERS/ API
 app.use("/api/auth",authController);
 app.use("/api/users",userController);
+app.use("/api/posts",postController);
 
 
 
