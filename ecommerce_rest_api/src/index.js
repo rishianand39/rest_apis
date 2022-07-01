@@ -14,11 +14,11 @@ app.use(morgan("common"));
 
 //CONTROLLERS
 const authController=require("./controllers/auth.controller")
-
+const userController=require("./controllers/user.controller")
 
 // ROUTERS/ API
 app.use("/api/auth",authController)
-
+app.use("api/users",userController)
 
 
 
