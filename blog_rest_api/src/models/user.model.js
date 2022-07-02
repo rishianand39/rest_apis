@@ -33,10 +33,14 @@ const userSchema= new mongoose.Schema({
         type: String,
         required:false,
         default: '',
+    },
+    isAdmin:{
+        type: Boolean,
     }
 
 },{
-    timestamps:true
+    timestamps:true,
+    versionKey:false
 })
 
 const User=mongoose.model("User",userSchema)
